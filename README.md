@@ -4,8 +4,7 @@
 $ npm install
 ```
 
-`Starting MongoDB server`
-`Starting RabbitMQ`
+`Starting MongoDB and RabbitMQ`
 
 ## Service
 
