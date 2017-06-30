@@ -10,7 +10,7 @@ const mongoStore = require('seneca-mongo-store');
 const order = require('./lib/order');
 
 const PINS = [
-  'role:order,cmd:*',
+  'role:order,cmd:*'
 ];
 
 const opts = {
