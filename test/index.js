@@ -64,7 +64,6 @@ describe('test ORDER', () => {
     .gate()
     .act(pattern, (ignore, result) => {
       expect(result.orders).to.exist();
-      expect(result.ok).to.equal(true);
     })
     .ready(fin);
   });
