@@ -89,12 +89,30 @@ describe('test ORDER', () => {
     .ready(fin);
   });
 
+  it('findById not found', (fin) => {
+    const seneca = testSeneca(fin);
+
+    const pattern = {
+      role: ROLE,
+      cmd: 'findById',
+      id: '595a66789f14e52b68b28d3a'
+    };
+
+    seneca
+    .gate()
+    .act(pattern, (ignore, result) => {
+      expect(result.ok).to.equal(false);
+      expect(result.why).to.equal('ID not found');
+    })
+    .ready(fin);
+  });
+
   it('update', (fin) => {
     const seneca = testSeneca(fin);
 
     const pattern = {
       role: ROLE,
-      cmd: 'create',
+      cmd: 'update',
       id: _id,
       emission: '06/06/2017',
       price: 50.00,
@@ -109,6 +127,27 @@ describe('test ORDER', () => {
       expect(result.order.client).to.equal('Client test - alter');
       expect(result.order.id).to.exist();
       expect(result.ok).to.equal(true);
+    })
+    .ready(fin);
+  });
+
+  it('update not found', (fin) => {
+    const seneca = testSeneca(fin);
+
+    const pattern = {
+      role: ROLE,
+      cmd: 'update',
+      id: '595a66789f14e52b68b28d3c',
+      emission: '06/06/2017',
+      price: 50.00,
+      client: 'Client test - alter'
+    };
+
+    seneca
+    .gate()
+    .act(pattern, (ignore, result) => {
+      expect(result.ok).to.equal(false);
+      expect(result.why).to.equal('ID not found');
     })
     .ready(fin);
   });
@@ -130,13 +169,13 @@ describe('test ORDER', () => {
     .ready(fin);
   });
 
-  it('findById not found', (fin) => {
+  it('remove not found', (fin) => {
     const seneca = testSeneca(fin);
 
     const pattern = {
       role: ROLE,
-      cmd: 'findById',
-      id: _id
+      cmd: 'remove',
+      id: '595a66789f14e52b68b28d3w'
     };
 
     seneca
