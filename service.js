@@ -2,7 +2,7 @@
 
 require('dotenv').load({silent: true});
 
-const seneca = require('seneca')();
+const seneca = require('seneca')({base: 'api-order'});
 const entity = require('seneca-entity');
 const mesh = require('seneca-mesh');
 const consul = require('seneca-consul-registry');
@@ -19,11 +19,9 @@ const opts = {
     options: {}
   },
   mesh: {
-    auto: true,
-    host: process.env.ADDR || '127.0.0.1',
     listen: [{
       pin: PINS,
-      host: process.env.ADDR || '127.0.0.1',
+      host: process.env.ADDR || '127.0.0.13',
       port: process.env.PORT || 50000 + Math.floor((10000 * Math.random()))
     }],
     discover: {
@@ -31,6 +29,9 @@ const opts = {
         active: true
       },
       multicast: {
+        active: false
+      },
+      guess: {
         active: false
       }
     }
