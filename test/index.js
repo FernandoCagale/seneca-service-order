@@ -12,7 +12,7 @@ const ROLE = 'order';
 
 const opts = {
   mongo: {
-    uri: process.env.URI || 'mongodb://127.0.0.1:27017/seneca-order-test',
+    uri: 'mongodb://127.0.0.1:27017/seneca-order-test',
     options: {}
   }
 };

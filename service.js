@@ -15,13 +15,13 @@ const PINS = [
 
 const opts = {
   mongo: {
-    uri: process.env.URI || 'mongodb://127.0.0.1:27017/seneca-order',
+    uri: 'mongodb://127.0.0.1:27017/seneca-order',
     options: {}
   },
   mesh: {
     listen: [{
       pin: PINS,
-      host: process.env.ADDR || '127.0.0.13',
+      host: process.env.ADDR || '127.0.0.1',
       port: process.env.PORT || 50000 + Math.floor((10000 * Math.random()))
     }],
     discover: {
